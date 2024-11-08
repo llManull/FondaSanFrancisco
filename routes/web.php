@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminsLoginController;
 use App\Http\Controllers\UsersLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/logeado/index', '/logeado/index');
+Route::middleware(['auth.custom'])->group(function () {
+    Route::view('/logeado/index', '/logeado/index');
+    Route::view('/logeado/paquetes', '/logeado/paquetes');
+    Route::view('/logeado/overview', '/logeado/overview');
+    Route::view('/logeado/nosotros', '/logeado/nosotros');
+});
+
+//Login y Register páginas
 Route::get('/inicio/login', [UsersLoginController::class, 'index']);
 Route::post('/inicio/login', [UsersLoginController::class, 'login'])->name('login');
 Route::post('logout', [UsersLoginController::class, 'logout'])->name('logout');
