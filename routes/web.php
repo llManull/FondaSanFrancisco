@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminsLoginController;
+use App\Http\Controllers\ProductoControllerController;
 use App\Http\Controllers\UsersLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +20,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth.custom'])->group(function () {
-    Route::view('/logeado/index', '/logeado/index');
+    Route::get('/logeado/index', [ProductoControllerController::class, 'index']);
+    Route::resource('logeado', ProductoControllerController::class);
     Route::view('/logeado/paquetes', '/logeado/paquetes');
     Route::view('/logeado/overview', '/logeado/overview');
     Route::view('/logeado/nosotros', '/logeado/nosotros');
