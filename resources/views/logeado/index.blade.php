@@ -12,8 +12,7 @@
     <br><br>
     <h1
         class="mb-4 text-4xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white text-center">
-        Conoce nuestros <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">productos</mark> de Alta
-        calidad</h1>
+        Conoce nuestro <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Menú</mark> </h1>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4" style="margin: 3rem 12rem;">
         @foreach ($productos as $producto)
             <div
@@ -23,7 +22,7 @@
                         alt="{{ $producto->name }}">
                 </center>
                 <div class="px-5 pb-5">
-                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
+                    <h5 class="text-center text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
                         {{ $producto->name }}
                     </h5>
                     <ul role="list" class="space-y-5 my-7">
@@ -49,7 +48,7 @@
                     </ul>
                     <div class="flex items-center justify-between">
                         <span class="text-3xl font-bold text-gray-900 dark:text-white">${{ $producto->price }}</span>
-                        {{-- <form action="/carrito/agregar" method="POST">
+                        <form action="/carrito/agregar" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{$producto->id}}">
                             <input type="hidden" name="name" value="{{$producto->name}}">
@@ -63,7 +62,7 @@
                                 </svg>
                                 Agregar al Carrito
                             </button>
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
             </div>

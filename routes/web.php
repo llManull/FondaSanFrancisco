@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProductoControllerController;
+use App\Http\Controllers\ApiPayPalController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsersLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +21,19 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth.custom'])->group(function () {
-    Route::get('/logeado/index', [ProductoControllerController::class, 'index']);
-    Route::resource('logeado', ProductoControllerController::class);
+    Route::get('/logeado/index', [ProductoController::class, 'index']);
+    Route::resource('logeado', ProductoController::class);
+    Route::get('/prueba/producto', [ProductoController::class, 'productosCarrito']);
+    Route::post('/carrito/agregar',[ProductoController::class, 'agregarCarrito']);
+    Route::post('/carrito/quitar', [ProductoController::class, 'quitarCarrito']);
+    Route::post('/carrito/incrementar', [ProductoController::class, 'incrementarCarrito']);
+    Route::post('/carrito/decrementar', [ProductoController::class, 'decrementarCarrito']);
+    //Api de Paypal
+    Route::post('pay', [ApiPayPalController::class, 'pay'])->name('payment');
+    Route::get('success', [ApiPayPalController::class, 'success']);
+    Route::get('error', [ApiPayPalController::class, 'error']);
+
+
     Route::view('/logeado/paquetes', '/logeado/paquetes');
     Route::view('/logeado/overview', '/logeado/overview');
     Route::view('/logeado/nosotros', '/logeado/nosotros');
