@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth.custom'])->group(function () {
     Route::get('/logeado/index', [ProductoController::class, 'index']);
-    Route::resource('logeado', ProductoController::class);
+    Route::resource('logeado', ProductoController::class)->except(['show']);
     Route::get('/prueba/producto', [ProductoController::class, 'productosCarrito']);
     Route::post('/carrito/agregar',[ProductoController::class, 'agregarCarrito']);
     Route::post('/carrito/quitar', [ProductoController::class, 'quitarCarrito']);
@@ -34,7 +34,6 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::get('error', [ApiPayPalController::class, 'error']);
 
 
-    Route::view('/logeado/paquetes', '/logeado/paquetes');
     Route::view('/logeado/overview', '/logeado/overview');
     Route::view('/logeado/nosotros', '/logeado/nosotros');
 });

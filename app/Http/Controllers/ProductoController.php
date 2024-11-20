@@ -42,7 +42,8 @@ class ProductoController extends Controller
         return view('/logeado/carrito')->with('productosCarrito', \Cart::getContent());
     }
 
-    public function agregarCarrito(Request $request){
+    public function agregarCarrito(Request $request)
+    {
         //dd($request->all());
         \Cart::add(array(
             'id' => $request->id,
@@ -58,19 +59,22 @@ class ProductoController extends Controller
         return redirect('/prueba/producto');
     }
 
-    public function quitarCarrito(Request $request){
+    public function quitarCarrito(Request $request)
+    {
         \Cart::remove($request->id);
         return redirect('/prueba/producto');
     }
 
-    Public function incrementarCarrito(Request $request){
+    public function incrementarCarrito(Request $request)
+    {
         \Cart::update($request->id, array(
             'quantity' => 1,
         ));
         return redirect('/prueba/producto');
     }
 
-    Public function decrementarCarrito(Request $request){
+    public function decrementarCarrito(Request $request)
+    {
         \Cart::update($request->id, array(
             'quantity' => -1,
         ));

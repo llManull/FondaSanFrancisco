@@ -37,7 +37,7 @@ class UsersLoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('users_login')->attempt($credentials)) {
             return redirect('/logeado/index');
         }
 

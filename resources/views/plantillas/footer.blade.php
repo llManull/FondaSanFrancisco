@@ -13,7 +13,7 @@
     <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4" style="margin-top: 3rem;">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="/" class="flex m-2 gap-4 items-center">
+                <a href="#" class="flex m-2 gap-4 items-center">
                     <img src="{{ url('storage/logo.png') }}" width="100" alt="Fonda San Francisco" />
                     <span class=" text-2xl font-semibold dark:text-white">
                         Fonda San Francisco

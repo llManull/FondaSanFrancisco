@@ -1,2 +1,0 @@
-@include('/plantillas/navbarCliente')
-

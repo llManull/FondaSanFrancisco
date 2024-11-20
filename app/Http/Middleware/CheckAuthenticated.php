@@ -10,7 +10,7 @@ class CheckAuthenticated
 {
     public function handle($request, Closure $next)
 {
-    if (!auth()->guard('web')->check()) {
+    if (!auth()->guard('users_login')->check()) {
         return redirect('/inicio/login');
     }
 
