@@ -21,10 +21,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth.custom'])->group(function () {
-    Route::get('/logeado/index', [ProductoController::class, 'index']);
+    Route::get('/logeado/index', [ProductoController::class, 'index'])->name('index');
     Route::resource('logeado', ProductoController::class)->except(['show']);
     Route::get('/prueba/producto', [ProductoController::class, 'productosCarrito']);
-    Route::post('/carrito/agregar',[ProductoController::class, 'agregarCarrito']);
+    Route::post('/carrito/agregar', [ProductoController::class, 'agregarCarrito']);
     Route::post('/carrito/quitar', [ProductoController::class, 'quitarCarrito']);
     Route::post('/carrito/incrementar', [ProductoController::class, 'incrementarCarrito']);
     Route::post('/carrito/decrementar', [ProductoController::class, 'decrementarCarrito']);

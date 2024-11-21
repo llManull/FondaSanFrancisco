@@ -7,21 +7,26 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $productos = Producto::all();
-        return view('logeado.index', compact('productos'));
+        $orden = $request->get('orden', 'default');
+
+        switch ($orden) {
+            case 'az':
+                $productos = Producto::orderBy('name', 'asc')->get();
+                break;
+            case 'precio':
+                $productos = Producto::orderBy('price', 'asc')->get();
+                break;
+            default:
+                $productos = Producto::all();
+                break;
+        }
+
+        return view('logeado.index', compact('productos', 'orden'));
     }
 
-    public function create()
-    {
-        return view('logeado.create');
-        return view('logeado.create', compact('productos'));
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $datosProductos = request()->except('_token');
