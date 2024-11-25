@@ -1,32 +1,59 @@
 @include('/plantillas/navbarCliente')
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Productos</title>
 </head>
-
+<header class="m-4">
+    <div class="flex justify-center items-center">
+        <ol
+            class="list-decimal bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md text-gray-800 dark:text-gray-100 text-center space-y-4">
+            <li>
+                <span class="font-semibold">Ubicación:</span>
+                {{ session('userData')['city'] ?? 'Ciudad desconocida' }},
+                {{ session('userData')['region'] ?? 'Región desconocida' }}
+            </li>
+            <li>
+                <span class="font-semibold">País:</span>
+                {{ session('userData')['country_name'] ?? 'País desconocido' }}
+            </li>
+            <li>
+                <span class="font-semibold">Moneda:</span>
+                {{ session('userData')['currency']['name'] ?? 'Moneda desconocida' }}
+                ({{ session('userData')['currency']['symbol'] ?? '' }})
+            </li>
+            <li>
+                <span class="font-semibold">Zona Horaria:</span>
+                {{ session('userData')['time_zone']['name'] ?? 'Zona horaria desconocida' }}
+            </li>
+        </ol>
+    </div>
+</header>
 <body>
     <br><br>
-    <h1
-        class="mb-4 text-4xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white text-center">
-        Conoce nuestro <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Menú</mark> </h1>
-    <form method="GET" action="{{ route('index') }}" class="text-center mb-6">
-        <label for="orden" class="text-white text-lg">Ordenar por:</label>
-        <select name="orden" id="orden" class="ml-2 p-2 rounded">
-            <option selected disabled value="default" {{ $orden == 'default' ? 'selected' : '' }}>Seleccionar</option>
-            <option value="az" {{ $orden == 'az' ? 'selected' : '' }}>De A-Z</option>
-            <option value="precio" {{ $orden == 'precio' ? 'selected' : '' }}>Precio (Menor a Mayor)</option>
-        </select>
-        <button type="submit"
-            class="ml-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-            Ordenar
-        </button>
-    </form>
+    <div class="flex justify-center" style="gap: 8rem;">
+        <h1
+            class="mb-4 text-4xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white text-center">
+            Conoce nuestro <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">Menú</mark>
+        </h1>
+        <form method="GET" action="{{ route('index') }}" class="text-center m-4">
+            <label for="orden" class="text-white text-lg italic">ORDENAR POR:</label>
+            <select name="orden" id="orden" class="ml-2 p-2 rounded">
+                <option selected disabled value="default" {{ $orden == 'default' ? 'selected' : '' }}>
+                    --Seleccionar--
+                </option>
+                <option value="az" {{ $orden == 'az' ? 'selected' : '' }}>Productos de A-Z</option>
+                <option value="precio" {{ $orden == 'precio' ? 'selected' : '' }}>Precio (Menor a Mayor)</option>
+            </select>
+            <button type="submit"
+                class="ml-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                Ordenar
+            </button>
+        </form>
+    </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4" style="margin: 3rem 12rem;">
         @foreach ($productos as $producto)
             <div
@@ -86,7 +113,6 @@
             </div>
         @endforeach
     </div>
-
     <footer>
         @include('/plantillas/footer')
     </footer>

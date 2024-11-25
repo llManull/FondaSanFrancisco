@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiPayPalController;
+use App\Http\Controllers\IpDataController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsersLoginController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth.custom'])->group(function () {
+    Route::get('/logeado/index', [IpDataController::class, 'getUserInfo']);
     Route::get('/logeado/index', [ProductoController::class, 'index'])->name('index');
     Route::resource('logeado', ProductoController::class)->except(['show']);
     Route::get('/prueba/producto', [ProductoController::class, 'productosCarrito']);
