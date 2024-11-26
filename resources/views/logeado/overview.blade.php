@@ -256,7 +256,7 @@
 </article>
 <article style="background-color: #f4f4f4; margin: 3rem; border-radius: 7px; padding: 2rem;">
     <div class="flex items-center mb-4">
-        <img class="w-10 h-10 me-4 rounded-full" src="{{ url('/storage/chris.jpg') }}" alt="Jese">
+        <img class="w-10 h-10 me-4 rounded-full" src="{{ url('/storage/nelida.jpg') }}" alt="Jese">
         <div class="font-medium dark:text-black">
             <p>Nelida Abril <time datetime="2014-08-16 19:00" class="block text-sm text-black-500 dark:text-black-400">
                     Fecha de la visita Agosto 2015</time>
@@ -291,12 +291,11 @@
         </svg>
         <h3 class="ms-2 text-sm font-semibold text-gray-900 dark:text-black">Sumamente delicioso y claro que volvere!</h3>
     </div>
-    <p class="mb-2 text-black-500 dark:text-black-400">La Fonda San Francisco es mi lugar favorito para desayunar chilaquiles. 
-        La salsa tiene el nivel perfecto de picante y las porciones son generosas. 
-        Además, los tacos al pastor son de los mejores que he probado: la carne está jugosa y bien sazonada. 
-        ¡Siempre regreso por el excelente servicio y la comida deliciosa!
+    <p class="mb-2 text-black-500 dark:text-black-400"> Los clientes destacan la calidad de los tacos al pastor y las enchiladas, 
+        resaltando el sabor auténtico y las porciones generosas. Además, 
+        el ambiente del lugar y la atención al cliente son muy apreciados, creando una experiencia cálida y agradable.!
     </p>
-    <p class="mb-3 text-black-500 dark:text-black-400">Excelente lugar, muy recomendado, visitenlos no se arrepentiran!.
+    <p class="mb-3 text-black-500 dark:text-black-400">Excelente lugar, muy recomendado!.
     </p>
 </article>
 
