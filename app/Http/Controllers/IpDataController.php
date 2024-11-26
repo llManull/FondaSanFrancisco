@@ -16,9 +16,8 @@ class IpDataController extends Controller
         $key = env('IPDATA_KEY');
         $ipdata = new Ipdata($key, $httpClient, $psr17Factory);
 
-        $userIp = '192.168.0.87';
+        $userIp = '8.8.8.8';
         $data = $ipdata->lookup($userIp);
-        dd($data);
 
         $userData = [
             'city' => $data['city'] ?? 'Ciudad desconocida',

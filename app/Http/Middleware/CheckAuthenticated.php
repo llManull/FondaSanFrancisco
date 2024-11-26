@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 class CheckAuthenticated
 {
     public function handle($request, Closure $next)
-{
-    if (!auth()->guard('users_login')->check()) {
-        return redirect('/inicio/login');
-    }
+    {
+        if (!auth()->guard('users_login')->check() && !auth()->guard('web')->check()) {
+            return redirect('/inicio/login');
+        }
 
-    return $next($request);
-}
+        return $next($request);
+    }
 }

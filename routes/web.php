@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiPayPalController;
+use App\Http\Controllers\GithubController;
 use App\Http\Controllers\IpDataController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsersLoginController;
@@ -39,6 +40,10 @@ Route::middleware(['auth.custom'])->group(function () {
     Route::view('/logeado/overview', '/logeado/overview');
     Route::view('/logeado/nosotros', '/logeado/nosotros');
 });
+
+//GitHub Login
+Route::get('auth/github', [GithubController::class, 'redirect'])->name('github.login');
+Route::get('auth/github/callback', [GithubController::class, 'callback']);
 
 //Login y Register páginas
 Route::get('/inicio/login', [UsersLoginController::class, 'index']);
